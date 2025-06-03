@@ -13,6 +13,6 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Имя: " + name;
+        return String.format("Имя: %s", name);
     }
 }
