@@ -3,6 +3,7 @@ package guru.qa;
 import com.google.gson.Gson;
 import guru.qa.domain.Teacher;
 import guru.qa.jupiter.TeacherArgumentConverter;
+import guru.qa.jupiter.TeacherFile;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -52,6 +53,18 @@ public class ArgumentsExampleTest {
     })
     @ParameterizedTest
     void apiParamTestV2(@ConvertWith(TeacherArgumentConverter.class) Teacher teacher) throws IOException {
+
+        // В реальности будем отправлять объект Teacher в API
+        System.out.println(teacher.toString());
+
+    }
+
+    @ValueSource(strings = {
+            "files/dima.json",
+            "files/stas.json"
+    })
+    @ParameterizedTest
+    void apiParamTestV3(@TeacherFile Teacher teacher) throws IOException {
 
         // В реальности будем отправлять объект Teacher в API
         System.out.println(teacher.toString());
